@@ -1,0 +1,19 @@
+[default]
+localhost ansible_connection=local
+
+[ardeshir]
+54.91.225.113 ansible_ssh_private_key_file=~/secrets/DDBCourse.pem ansible_ssh_user=ec2-user
+
+[metalearn]
+34.192.16.166 ansible_ssh_private_key_file=~/secrets/univrsnew.pem ansible_ssh_user=ec2-user
+
+[univrs]
+54.152.183.248 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
+
+[awsami]
+54.91.225.113 ansible_ssh_private_key_file=~/secrets/DDBCourse.pem ansible_ssh_user=ec2-user
+localhost ansible_connection=local
+# 34.192.16.166 ansible_ssh_private_key_file=~/secrets/univrsnew.pem ansible_ssh_user=ec2-user
+
+[ubuntu]
+54.152.183.248 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
