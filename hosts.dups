@@ -1,8 +1,14 @@
 [default]
 localhost ansible_connection=local
 
+[ardeshir_ip]
+54.91.225.113 ansible_ssh_private_key_file=~/secrets/DDBCourse.pem ansible_ssh_user=ec2-user
+
 [ardeshir]
 ardeshir.org  ansible_ssh_private_key_file=~/secrets/DDBCourse.pem ansible_ssh_user=ec2-user
+
+[univrs_ip]
+54.152.183.248 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu 
 
 [univrs]
 univrs.io      ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
