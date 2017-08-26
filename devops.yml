@@ -1,6 +1,6 @@
 # File name devops.yml
 ---
-- hosts: '{{ host }}'
+- hosts: "{{ host | default('localhost') }}"
   vars: 
     is_enabled: false
 
