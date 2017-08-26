@@ -2,8 +2,11 @@
 ---
 - hosts: burning
   vars: 
-    is_enabled: true
+    is_enabled: false
   tasks:
   - shell: echo "hello devops world"
     when: is_enabled 
-  
+
+  - command: echo {{ item }}
+    with_items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    when: item > 3
