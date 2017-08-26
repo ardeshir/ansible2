@@ -1,5 +1,9 @@
 # File name devops.yml
 ---
-- hosts: all
+- hosts: burning
+  vars: 
+    is_enabled: true
   tasks:
-  - shell: echo "hello devops world" 
+  - shell: echo "hello devops world"
+    when: is_enabled 
+  
