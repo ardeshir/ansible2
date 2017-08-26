@@ -1,11 +1,15 @@
 # File name devops.yml
 ---
-- hosts: all
+- hosts: '{{ host }}'
   vars: 
     is_enabled: false
+
   tasks:
   - shell: echo "hello devops world"
     when: is_enabled 
+
+  - debug: msg= "Host is {{ ansible_hostname }}"
+    when: not is_enabled
 
   - command: echo {{ item }}
     with_items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
