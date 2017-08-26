@@ -1,12 +1,13 @@
-# File name devops.yml
+# File name univrs.yml
+# ansible-playbook univrs.yml -e "var_host=bunrning"
 ---
-- hosts: all
+- hosts: "{{ var_host | default('univrs') }}"
   vars: 
     is_enabled: false
   tasks:
   - shell: echo "hello devops world"
     when: is_enabled 
 
-  - command: echo {{ item }}
+  - command: echo "{{ item }}"
     with_items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     when: item > 3
