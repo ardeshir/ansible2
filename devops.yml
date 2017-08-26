@@ -4,8 +4,21 @@
 - hosts: "{{ host | default('localhost') }}"
   vars: 
     is_enabled: false
-
+    listA: [1,2,3,4]
+    listB: [A,B,C,D]
+    servers_dic:
+      dvlapp66:
+        user: tomcat
+      dvlapp68: 
+        user: appadm
+      qvlapp37: 
+        user: root
+      
   tasks:
+  - name: Download Java/JDK version 
+    command:  echo "Hi from {{item.key }} the user is {{ item.value.user }}"
+    with_dict:  "{{ servers_dic }}"
+
   - shell: echo "hello devops world"
     when: is_enabled 
 
