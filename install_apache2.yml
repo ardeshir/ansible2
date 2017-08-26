@@ -3,11 +3,14 @@
 - hosts: all
   tasks:
   - name: "Install Apache"
-    yum: name={{ item }} state=present
+    yum: pkg={{ item }} state=installed
     with_items:
     - httpd
+    notify:
+      - Start httpd
 
-  - name: "Turn on Apache and set it to run on boot"
+  handlers:
+  - name: Start httpd
     service: name={{ item }} state=started enabled=yes
     with_items:
     - httpd 
