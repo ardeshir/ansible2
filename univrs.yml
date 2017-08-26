@@ -1,7 +1,8 @@
 # File name univrs.yml
 # ansible-playbook univrs.yml -e "var_host=bunrning"
+# use -e "host=burning" to change from default
 ---
-- hosts: "{{ var_host | default('univrs') }}"
+- hosts: "{{ host | default('univrs') }}"
   vars: 
     is_enabled: false
   tasks:
