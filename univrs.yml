@@ -34,6 +34,12 @@
     lineinfile:
       path: /tmp/new.conf
       line: 'adding this line to file'
+  - name: replace line in on website
+    lineinfile:
+      path: /var/www/html/public/index.html
+      regexp: '^<h1>Burning Books Rebellion!</h1>'
+      line: '<h2>Burning Books Rebellion...</h2>'
+    when: host=="localhost"
 
   - name: loop do until 
     shell: echo "hello"
