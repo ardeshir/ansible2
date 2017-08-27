@@ -1,8 +1,9 @@
 # File name univrs.yml
-# ansible-playbook univrs.yml -e "var_host=bunrning"
+# ansible-playbook univrs.yml -e "host=bunrning"
 # use -e "host=burning" to change from default
 ---
 - hosts: "{{ host | default('univrs') }}"
+  become: yes
   vars: 
     is_enabled: false
   tasks:
@@ -11,4 +12,19 @@
 
   - command: echo "{{ item }}"
     with_items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    when: item > 3
+    when: item > 11
+
+  - name: loop over envirement facts
+    debug: msg=" {{item.key}} = {{item.value}} "
+    with_dict: ansible_env 
+  
+  - name: loop over files and copy
+    copy: source={{ item }} dest=/tmp/loops
+    with_fileglob: "/tmp/*.conf" 
+
+  - name: loop do until 
+    shell: echo "hello"
+    register: output
+    retries: 5
+    delay: 5
+    until: output.stdout.fine('hello') != -1   
