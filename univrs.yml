@@ -4,8 +4,16 @@
 ---
 - hosts: "{{ host | default('univrs') }}"
   become: yes
+  gather_facts: yes
   vars: 
     is_enabled: false
+    variables:
+      onekey: 
+        one: 1
+      twokey:
+        two: 2
+      threekey:
+        three: 3
   tasks:
   - shell: echo "hello devops world"
     when: is_enabled 
@@ -15,16 +23,21 @@
     when: item > 11
 
   - name: loop over envirement facts
-    debug: msg=" {{item.key}} = {{item.value}} "
-    with_dict: ansible_env 
-  
+    debug: msg={{item.key}}={{item.value}}
+    with_dict: "{{ ansible_env }}"   
+
   - name: loop over files and copy
-    copy: source={{ item }} dest=/tmp/loops
+    copy: src={{ item }} dest=/tmp/new.conf
     with_fileglob: "/tmp/*.conf" 
+
+  - name: add line to file 
+    lineinfile:
+      path: /tmp/new.conf
+      line: 'adding this line to file'
 
   - name: loop do until 
     shell: echo "hello"
     register: output
     retries: 5
     delay: 5
-    until: output.stdout.fine('hello') != -1   
+    until: output.stdout.find('hello') != -1   
