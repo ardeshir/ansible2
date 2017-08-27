@@ -1,0 +1,18 @@
+# data dir
+{% for dir in data_dir if dir != "/"  %}
+
+ {% if loop.first %}
+ 
+data_dir = {{ dir }}{{ ',' if not loop.last else '' }}
+
+ {% else %}
+           {{ dir }}{{ ',' if not loop.last else '' }}
+ {% endif %}
+
+{% else %}
+
+ no data dirs found, skipping "/" 
+
+{% endfor %}
+
+

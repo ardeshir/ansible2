@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: false
   vars:
+    data_dir: ['/', '/dir2','/dir3']
     api:
       v2: true
     setting: a_val
@@ -13,6 +14,9 @@
     - name: pause with render
       pause:
         prompt: "{{ lookup('template', 'prompt.j2') }}"
+    - name: pause to see data_dir
+      pause:
+        prompt: "{{ lookup('template', 'data.j2') }}"
     - name: print the api version
       debug: 
         msg: "API =  cinder{{ 'v2' if api.v2 else '' }}"
