@@ -28,3 +28,16 @@
   - command: echo {{ item }}
     with_items: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     when: item > 3
+  - name: get date on servers
+    shell: date 
+    register: output
+
+  - debug: msg="date is {{output.stdout}}"
+
+  - debug: var=ansible_distribution_version
+
+  - name: group some machines together temporarily
+    group_by: key=rhel_{{ansible_distribution_version}}
+    register: group_result
+
+  - debug: var=group_result 
