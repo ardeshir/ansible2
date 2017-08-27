@@ -45,4 +45,15 @@
   - name: don't install on debian machines
     yum: name=vim state=latest
     when: (ansible_os_family=="RedHat" and ansible_distribution_major_version=="6")
+
+  - name: add line to file 
+    lineinfile:
+      path: /tmp/new.conf
+      line: 'adding this line to file'
+  - name: replace line in on website
+    lineinfile:
+      path: /var/www/html/public/index.html
+      regexp: '^<h1>Burning Books Rebellion!</h1>'
+      line: '<h1>Burning Books Rebellion!!</h1>'
+    when: "'localhost' in inventory_hostname"
  
