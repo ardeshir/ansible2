@@ -2,7 +2,7 @@
 # ansible-playbook univrs.yml -e "host=bunrning"
 # use -e "host=burning" to change from default
 ---
-- hosts: "{{ host | default('univrs') }}"
+- hosts: "{{ host | default('localhost') }}"
   become: yes
   gather_facts: yes
   vars: 
@@ -37,9 +37,10 @@
   - name: replace line in on website
     lineinfile:
       path: /var/www/html/public/index.html
-      regexp: '^<h1>Burning Books Rebellion!</h1>'
-      line: '<h2>Burning Books Rebellion...</h2>'
-    when: host=="localhost"
+      regexp: '^<h2>Burning Books Rebellion...</h2>'
+      line: '<h1>Burning Books Rebellion!</h1>'
+    #when: host=="localhost"
+    when: "'localhost' in inventory_hostname"
 
   - name: loop do until 
     shell: echo "hello"

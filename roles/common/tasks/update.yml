@@ -1,0 +1,11 @@
+# File name devops.yml
+# use -e "host=ardeshir" to pick another host
+---
+- name: replace line in on website index file
+  lineinfile:
+    path: /var/www/html/public/index.html
+    regexp: '^<h1>Burning Books Rebellion!!</h1>'
+    line: '<h1>Burning Books Rebellion again!</h1>'
+  when: "'localhost' in inventory_hostname"
+
+ 
