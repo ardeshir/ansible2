@@ -2,3 +2,4 @@ ansible all -m setup |grep ansible_os_family
 ansible all -m setup |grep ansible_distribution_major
 ansible all -m setup |grep ansible_distribution_*
 ansible all -m setup |grep ansible_*
+ansible -m setup -a 'filter=ansible_local' -i hosts all

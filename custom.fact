@@ -1,0 +1,9 @@
+[packages]
+smb_package = smb
+ftp_package = vsftpd
+ db_package = mariadb-server
+
+[services]
+smb_service = smb
+ftp_service = vsftpd
+db_service  = mariadb
