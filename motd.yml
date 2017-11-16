@@ -1,0 +1,13 @@
+---
+- hosts: "{{ host | default('localhost') }}"
+  user: ubuntu
+  become: true
+  vars: 
+    system_owner: ardeshir.org@gmail.com
+  tasks:
+    - template: 
+        src: motd.j2
+        dest: /etc/motd
+        owner: root
+        group: root
+        mode: 0644
