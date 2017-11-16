@@ -5,14 +5,17 @@
   hosts: "{{ host | default('localhost') }}"
   vars: 
     remote_dir: /etc/ansible/facts.d
-    facts_file: custome.fact
+    facts_file: custom.fact
   tasks:
     - name: create remote directory
       file:
         state: directory
         recurse: yes
         path: "{{ remote_dir }}"
+      become: true
+
     - name: install new facts
       copy:
         src: "{{ facts_file }}"
         dest: "{{ remote_dir }}" 
+      become: true

@@ -1,0 +1,58 @@
+---
+- hosts: "{{ host | defualt('localhost') }}" 
+  vars: 
+    firewall: firewalld
+
+  tasks:
+    - name: install the firewall
+      yum: 
+        name: "{{ firewall }}"
+        state: latest
+
+    - name: start the firewall
+      service: 
+        name: "{{ firewall }}"
+        state: started
+        enabled: true
+
+- hosts: burning
+  tasks:
+    - name: include the variables file
+      include_vars: vars/allvars.yml
+
+    - name: include the tasks
+      incldue: tasks/allvars.yml
+
+    - name: open the port for the web server
+      firewalld:
+        service: http
+        state: enabled
+        immediate: true
+        permanent: true
+    - name: create index.html
+      copy:
+        content: "{{ ansible_fqdn }}{{ ansible_default_ipv4.address }} managed by Ansible\n"
+        dest: "{{ web_root }}/index.html"
+
+- hosts: univrs
+  tasks: 
+    - name: include the variable file
+      include_vars: vars/allvars.yml
+
+    - name: include the tasks
+      include: tasks/allvars.yml
+
+    - name: open the port for the ftp service
+      firewalld: 
+        service: ftp
+        state: enabled
+        immediate: true
+        permanent: true
+
+    - name: open the port fot smb service
+      firewalld:
+        service: smb
+        state: enabled
+        immediate: true
+        permanent: true
+ 
