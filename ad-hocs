@@ -4,4 +4,4 @@ ansible all -m setup |grep ansible_distribution_*
 ansible all -m setup |grep ansible_*
 ansible -m setup -a 'filter=ansible_local' -i hosts all
 ansible all -i /etc/ansible/hosts -m setup -a 'filter=ansible_kernel'
-
+ansible all -i /etc/ansible/hosts -m setup -a 'filter=ansible_mounts' 

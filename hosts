@@ -4,17 +4,17 @@ localhost ansible_connection=local
 [burning]
 burningbooksrebellion.com ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
 
-[burning_ip]
-52.73.157.109 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
+#[burning_ip]
+#52.73.157.109 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
 
-[ardeshir_ip]
-54.236.204.86 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
+#[ardeshir_ip]
+#54.236.204.86 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
 
 [ardeshir]
 ardeshir.org  ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
 
-[univrs_ip]
-34.235.14.188  ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu 
+#[univrs_ip]
+#34.235.14.188  ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu 
 
 [univrs]
 univrs.io      ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
