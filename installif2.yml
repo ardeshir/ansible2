@@ -1,0 +1,26 @@
+---
+- hosts: "{{ host | default('localhost') }}"
+  become: yes
+  gather_facts: yes
+
+  tasks: 
+    - name: check mariadb status
+      command: /usr/bin/systemctl is-active mariadb
+      ignore_errors: yes # continue running, even if mariadb is not running, because this playbook
+                         # is going to act upon the result of this command. It might do something
+                         # even if maraidb currently is NOT active
+                         # To do This, the result of this command is stored in the result.rc variable
+                         # in the next line, and thi result.rc is referred to in the when statement
+      register: result   # This saves information about the result int, the result variable
+
+    - name: install http if mariadb is active
+      yum: 
+        name: httpd
+        state: installed
+      when: result.rc == 0 # this evaluates the output of the check task and will only
+                         # restart if the exit code fo the systemctl command is 0 
+                         # notice the indentation level of the when statement
+    - name: start httpd
+      service: 
+        name: httpd
+        state: started

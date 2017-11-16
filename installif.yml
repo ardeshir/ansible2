@@ -1,0 +1,12 @@
+---
+- hosts: "{{ host | default('localhost') }}"
+  become: yes
+  gather_facts: yes
+  tasks: 
+    - name: install package if sufficient disk space
+      yum: 
+        name: maraidb-server
+        state: latest
+      with_items: "{{ ansible_mounts }}"
+      when: item.mount == "/" and item.size_available > 200000000000
+... 
