@@ -1,0 +1,12 @@
+Please open >Terminal and type:
+
+sudo apt-get clean all
+sudo apt-get update
+sudo apt-get -f install
+sudo apt-get upgrade
+sudo apt-get autoremove
+sudo apt-get clean all
+
+give your user password when requested, you don't see nothing when you type it, then press enter.
+
+Then try to remove unused old kernel if you need help please ask here.
