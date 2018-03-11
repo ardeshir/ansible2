@@ -1,0 +1,25 @@
+---
+-
+  hosts: "{{ host | default('localhost') }}"
+  tasks:
+    - name: Ansible Jinja2 if 
+      debug:
+        msg: >
+             --===  Ansible Jinja2 if statement ==--
+           
+             {# If the hostname is univrs, include a message -#}
+             {% if ansible_hostname == "univrs" -%}
+                   This is Univrs.io
+             {% elif ansible_hostname == "ardeshir" -%}
+                   This is ardeshir.org (localhost)
+             {% endif %}
+
+    - name: Show IP Address
+      debug:
+        msg: "{{ ansible_default_ipv4.address }}"
+    - name: Show Custom Fact 1
+      debug:
+        msg: "{{ ansible_local.getdatejs.date }}"
+
+...
+     
