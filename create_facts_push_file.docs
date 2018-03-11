@@ -1,0 +1,29 @@
+root@ardeshir ~/ansible_project (master) $ ansible univrs -i hosts -m file -a 'path=/etc/ansible/facts.d recurse=yes state=directory' -e "host=univrs" --become
+univrs.io | SUCCESS => {
+    "changed": false,
+    "failed": false,
+    "gid": 0,
+    "group": "root",
+    "mode": "0755",
+    "owner": "root",
+    "path": "/etc/ansible/facts.d",
+    "size": 4096,
+    "state": "directory",
+    "uid": 0
+}
+root@ardeshir ~/ansible_project (master) $ ansible univrs -i hosts -m copy -a 'src=/etc/ansible/facts.d/getdatejs.fact dest=/etc/ansible/facts.d/getdatejs.fact mode=0755' -e "host=univrs" --become
+univrs.io | SUCCESS => {
+    "changed": true,
+    "checksum": "96114d00a839be93862601b8d5a382b6143bd1dd",
+    "dest": "/etc/ansible/facts.d/getdatejs.fact",
+    "failed": false,
+    "gid": 0,
+    "group": "root",
+    "md5sum": "93fa65cb85a9bc1c152a48044697ec79",
+    "mode": "0755",
+    "owner": "root",
+    "size": 43,
+    "src": "/home/ubuntu/.ansible/tmp/ansible-tmp-1520807772.1824667-137144159787335/source",
+    "state": "file",
+    "uid": 0
+}
