@@ -1,0 +1,11 @@
+
+             --===  Ansible Jinja2 if statement ==--
+
+             {# If the hostname is univrs, include a message -#}
+             {% if ansible_hostname == "univrs" -%}
+                   This is Univrs.io
+             {% elif ansible_hostname == "ardeshir" -%}
+                   This is ardeshir.org (localhost)
+             {% else -%}
+                   NOTHING WILL BE PRINTED HERE
+             {% endif %}

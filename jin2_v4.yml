@@ -2,7 +2,7 @@
 -
   hosts: "{{ host | default('localhost') }}"
   tasks:
-    - name: Using template module with .yml files  because some people are silly
+    - name: Using template module
       template:
         src: application.yml
         dest: "/tmp/application.yml"
