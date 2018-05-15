@@ -10,11 +10,11 @@ localhost ansible_connection=local
 ;;[sauce]
 ;;54.175.120.248 ansible_ssh_private_key_file=~/secrets/aws-lnss-dev-ws.pem  ansible_ssh_user=ec2-user
 
-[runcryp]
-174.129.185.96 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ec2-user
+;;[runcryp]
+;;174.129.185.96 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ec2-user
 
-[runcmd]
-52.91.132.154   ansible_ssh_private_key_file=~/secrets/runcmd.pem ansible_ssh_user=ec2-user
+;;[runcmd]
+;;52.91.132.154   ansible_ssh_private_key_file=~/secrets/runcmd.pem ansible_ssh_user=ec2-user
 
 [ardeshir_ip]
 54.236.204.86 ansible_ssh_private_key_file=~/secrets/docker.pem ansible_ssh_user=ubuntu
