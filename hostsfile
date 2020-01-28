@@ -1,0 +1,12 @@
+[marsdemo]
+10.12.204.24
+
+[marsdemo:vars]
+ansible_user= FSDILocalAdmin
+ansible_password= _$4VneaDj&6LU_8*RV5u_?9%
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+ansible_port=5986
+ansible_winrm_scheme=https
+ansible_winrm_transport=ntlm
+validate_certs=false
